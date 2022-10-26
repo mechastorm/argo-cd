@@ -104,6 +104,8 @@ Check if cluster secret has `argocd.argoproj.io/secret-type: cluster` label. If 
 still not visible then make sure it might be a permission issue. Try to list clusters using `admin` user (
 e.g. `argocd login --username admin && argocd cluster list`).
 
+You can also check the log output for the pods of `argocd-server`. Those logs may show errors that may show up when the pod attempted to read the cluster secret. An error may show up in those logs could be "could not unmarshal cluster secret <secret_name>". In this case, check the content of your cluster secret and ensure that the data is in the correct formats.
+
 ## Argo CD is unable to connect to my cluster, how do I troubleshoot it?
 
 Use the following steps to reconstruct configured cluster config and connect to your cluster manually using kubectl:
